@@ -92,7 +92,7 @@ def show_pokemon(request, pokemon_id):
             image_url
         )
 
-    pokemon = {
+    pokemon_info = {
         'pokemon_id': pokemon_id,
         'title_ru': pokemon.title,
         'img_url': pokemon.image.url,
@@ -101,6 +101,15 @@ def show_pokemon(request, pokemon_id):
         'title_jp': pokemon.title_jp
     }
 
+    if pokemon.parent:
+        pokemon_info.update({
+            'previous_evolution': {
+                'title_ru': pokemon.parent.title,
+                'pokemon_id': pokemon.parent.pk,
+                'img_url': pokemon.parent.image.url,
+            }
+        })
+
     return render(request, 'pokemon.html', context={
-        'map': folium_map._repr_html_(), 'pokemon': pokemon
+        'map': folium_map._repr_html_(), 'pokemon': pokemon_info
     })
