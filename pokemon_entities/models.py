@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Pokemon(models.Model):
-    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='children')
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='pokemon_images', null=True, blank=True)
     description = models.TextField(null=True, blank=True)

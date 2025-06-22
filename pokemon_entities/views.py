@@ -110,6 +110,16 @@ def show_pokemon(request, pokemon_id):
             }
         })
 
+    if pokemon.children.last():
+        pokemon_children = pokemon.children.last()
+        pokemon_info.update({
+            'next_evolution': {
+                'title_ru': pokemon_children.title,
+                'pokemon_id': pokemon_children.pk,
+                'img_url': pokemon_children.image.url,
+            }
+        })
+
     return render(request, 'pokemon.html', context={
         'map': folium_map._repr_html_(), 'pokemon': pokemon_info
     })
