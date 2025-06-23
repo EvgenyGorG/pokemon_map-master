@@ -110,8 +110,8 @@ def show_pokemon(request, pokemon_id):
             }
         })
 
-    if pokemon.previous_evolution.last():
-        previous_evolution = pokemon.previous_evolution.last()
+    if pokemon.previous_evolutions.last():
+        previous_evolution = pokemon.previous_evolutions.last()
         pokemon_info.update({
             'next_evolution': {
                 'title_ru': previous_evolution.title,
