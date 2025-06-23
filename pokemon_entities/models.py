@@ -3,11 +3,11 @@ from django.db import models
 
 class Pokemon(models.Model):
     """Покемон."""
-    parent = models.ForeignKey(
+    next_evolution = models.ForeignKey(
         'self', on_delete=models.SET_NULL,
         null=True, blank=True,
-        related_name='children',
-        verbose_name='родитель'
+        related_name='previous_evolution',
+        verbose_name='эволюция'
     )
     title = models.CharField('имя покемона на русском', max_length=200)
     image = models.ImageField("изображение" ,upload_to='pokemon_images', null=True, blank=True)
