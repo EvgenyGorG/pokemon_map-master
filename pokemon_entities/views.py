@@ -101,22 +101,22 @@ def show_pokemon(request, pokemon_id):
         'title_jp': pokemon.title_jp
     }
 
-    if pokemon.next_evolution:
+    if pokemon.previous_evolution:
         pokemon_info.update({
             'previous_evolution': {
-                'title_ru': pokemon.next_evolution.title,
-                'pokemon_id': pokemon.next_evolution.pk,
-                'img_url': pokemon.next_evolution.image.url,
+                'title_ru': pokemon.previous_evolution.title,
+                'pokemon_id': pokemon.previous_evolution.pk,
+                'img_url': pokemon.previous_evolution.image.url,
             }
         })
 
-    if pokemon.previous_evolutions.last():
-        previous_evolution = pokemon.previous_evolutions.last()
+    if pokemon.next_evolutions.last():
+        next_evolution = pokemon.next_evolutions.last()
         pokemon_info.update({
             'next_evolution': {
-                'title_ru': previous_evolution.title,
-                'pokemon_id': previous_evolution.pk,
-                'img_url': previous_evolution.image.url,
+                'title_ru': next_evolution.title,
+                'pokemon_id': next_evolution.pk,
+                'img_url': next_evolution.image.url,
             }
         })
 
