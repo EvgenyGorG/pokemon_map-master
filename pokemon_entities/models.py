@@ -7,7 +7,7 @@ class Pokemon(models.Model):
         'self', on_delete=models.SET_NULL,
         null=True, blank=True,
         related_name='previous_evolutions',
-        verbose_name='эволюция'
+        verbose_name='предок'
     )
     title = models.CharField('имя покемона на русском', max_length=200)
     image = models.ImageField("изображение" ,upload_to='pokemon_images', null=True, blank=True)
